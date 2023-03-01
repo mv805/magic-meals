@@ -10,7 +10,8 @@ import stepTwo from "../assets/step-2.PNG";
 import stepThree from "../assets/step-3.PNG";
 import stepFour from "../assets/step-4.PNG";
 import Disclaimer from "../components/Disclaimer";
-import './Main.scss';
+import "./Main.scss";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Main = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -156,7 +157,7 @@ const Main = () => {
   const loadingView = (
     <>
       <MenuHeader />
-      Loading...
+      <LoadingSpinner />
     </>
   );
 

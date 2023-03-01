@@ -7,6 +7,7 @@ import navPages from "../nav-directory";
 import { onAuthStateChanged } from "firebase/auth";
 import "./Home.scss";
 import Disclaimer from "../components/Disclaimer";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Home = () => {
   let { userId } = useParams();
@@ -47,7 +48,7 @@ const Home = () => {
   const loading = (
     <>
       <MenuHeader />
-      Loading...
+      <LoadingSpinner/>
     </>
   );
 

@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { addDoc, collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase_setup/firebase";
 import { useParams } from "react-router-dom";
+import LoadingSpinner from "./LoadingSpinner";
 
 const Foods = (props) => {
   let { userId, groupId } = useParams();
@@ -130,7 +131,9 @@ const Foods = (props) => {
               placeholder="Enter description"
             />
             <DangerCheckbox name="danger">Contains Allergen</DangerCheckbox>
-            <button type="submit" disabled={isSubmitting}>Submit</button>
+            <button type="submit" disabled={isSubmitting}>
+              Submit
+            </button>
           </Form>
         )}
       </Formik>
@@ -187,7 +190,7 @@ const Foods = (props) => {
     </>
   );
 
-  return foods ? foodDisplay : <p>loading...</p>;
+  return foods ? foodDisplay : <LoadingSpinner />;
 };
 
 export default Foods;

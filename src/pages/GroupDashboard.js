@@ -21,6 +21,7 @@ import * as Yup from "yup";
 import { GroupDescriptionInput, TitleEditInput } from "../form/inputs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Disclaimer from "../components/Disclaimer";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const GroupDashboard = () => {
   let { userId, groupId } = useParams();
@@ -56,7 +57,7 @@ const GroupDashboard = () => {
       const foodData = [];
       const foodQuery = await query(
         collection(db, "foods"),
-        where("userGroup", "==", groupId),
+        where("userGroup", "==", groupId)
       );
       const foodSnap = await getDocs(foodQuery);
       foodSnap.forEach((food) =>
@@ -69,9 +70,13 @@ const GroupDashboard = () => {
         })
       );
 
-      foodData.sort((a,b)=> {
-        if(a.title < b.title) {return -1;}
-        if(a.title > b.title) {return 1;}
+      foodData.sort((a, b) => {
+        if (a.title < b.title) {
+          return -1;
+        }
+        if (a.title > b.title) {
+          return 1;
+        }
         return 0;
       });
 
@@ -98,7 +103,7 @@ const GroupDashboard = () => {
   const loading = (
     <>
       <MenuHeader />
-      <p>Loading...</p>
+      <LoadingSpinner />
     </>
   );
 
@@ -194,7 +199,7 @@ const GroupDashboard = () => {
       <>
         <MenuHeader home logoutButton />
         <main className="container">
-        <Disclaimer/>
+          <Disclaimer />
           {isEditing !== "group name" && (
             <>
               <div className="group-title">
@@ -246,7 +251,12 @@ const GroupDashboard = () => {
                 );
               })}
           </article>
-          <Foods foods={groupFoods && groupFoods} updateGroup={()=>{setGroup(undefined)}}/>
+          <Foods
+            foods={groupFoods && groupFoods}
+            updateGroup={() => {
+              setGroup(undefined);
+            }}
+          />
         </main>
       </>
     );
