@@ -36,6 +36,7 @@ const Groups = (props) => {
       groupSnap.forEach((group) =>
         groupData.push({
           id: group.id,
+          members: group.data().users.length,
           groupName: group.data().groupName,
         })
       );
@@ -116,7 +117,7 @@ const Groups = (props) => {
       return (
         <article key={uniqid()}>
           <h3 className="group-title">{group.groupName}</h3>
-          <p className="id-indicator">Group ID#: {group.id}</p>
+          {group && <h6>Members: {`${group.members}`}</h6>}
           <button onClick={(e) => changeToGroup(userSelectingId, group.id)}>
             Select
           </button>
@@ -158,6 +159,7 @@ const Groups = (props) => {
   const groupDisplay = (groupData, userData) => {
     return (
       <>
+        <h1>Your User Groups:</h1>
         {groupData.length ? (
           userGroupSelectionButtons(groupData, userData.uid)
         ) : (
