@@ -54,23 +54,27 @@ const Foods = (props) => {
           props.updateGroup();
         }}
       >
-        <Form>
-          <TextInput
-            label="Food Title"
-            name="title"
-            type="text"
-            placeholder="Enter a title"
-          />
-          <TextAreaInput
-            label="Description"
-            name="description"
-            type="text"
-            rows="5"
-            placeholder="Enter description"
-          />
-          <DangerCheckbox name="danger">Contains Allergen</DangerCheckbox>
-          <button type="submit">Submit</button>
-        </Form>
+        {({ isSubmitting }) => (
+          <Form>
+            <TextInput
+              label="Food Title"
+              name="title"
+              type="text"
+              placeholder="Enter a title"
+            />
+            <TextAreaInput
+              label="Description"
+              name="description"
+              type="text"
+              rows="5"
+              placeholder="Enter description"
+            />
+            <DangerCheckbox name="danger">Contains Allergen</DangerCheckbox>
+            <button type="submit" disabled={isSubmitting}>
+              Submit
+            </button>
+          </Form>
+        )}
       </Formik>
       <button className="secondary" onClick={() => setIsAdding(false)}>
         Cancel
@@ -110,23 +114,25 @@ const Foods = (props) => {
           props.updateGroup();
         }}
       >
-        <Form>
-          <TextInput
-            label="Food Title"
-            name="title"
-            type="text"
-            placeholder="Enter a title"
-          />
-          <TextAreaInput
-            label="Description"
-            name="description"
-            type="text"
-            rows="5"
-            placeholder="Enter description"
-          />
-          <DangerCheckbox name="danger">Contains Allergen</DangerCheckbox>
-          <button type="submit">Submit</button>
-        </Form>
+        {({ isSubmitting }) => (
+          <Form>
+            <TextInput
+              label="Food Title"
+              name="title"
+              type="text"
+              placeholder="Enter a title"
+            />
+            <TextAreaInput
+              label="Description"
+              name="description"
+              type="text"
+              rows="5"
+              placeholder="Enter description"
+            />
+            <DangerCheckbox name="danger">Contains Allergen</DangerCheckbox>
+            <button type="submit" disabled={isSubmitting}>Submit</button>
+          </Form>
+        )}
       </Formik>
       <button className="secondary" onClick={() => setIsEditing(undefined)}>
         Cancel
@@ -143,7 +149,9 @@ const Foods = (props) => {
       <article>
         <h4>Foods and Recipes</h4>
         <footer>
-          {foods && !foods.length && <p>No Foods Assesed Yet. Please add one.</p>}
+          {foods && !foods.length && (
+            <p>No Foods Assesed Yet. Please add one.</p>
+          )}
           {foods &&
             foods.map((food) => {
               return (

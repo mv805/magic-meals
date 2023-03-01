@@ -87,22 +87,24 @@ const Groups = (props) => {
           setGroups(undefined);
         }}
       >
-        <Form>
-          <TextInput
-            label="Group Name"
-            name="groupName"
-            type="text"
-            placeholder="Enter name..."
-          />
-          <TextAreaInput
-            label="Description"
-            name="description"
-            type="text"
-            rows="5"
-            placeholder="Enter description"
-          />
-          <button type="submit">Submit</button>
-        </Form>
+        {({ isSubmitting }) => (
+          <Form>
+            <TextInput
+              label="Group Name"
+              name="groupName"
+              type="text"
+              placeholder="Enter name..."
+            />
+            <TextAreaInput
+              label="Description"
+              name="description"
+              type="text"
+              rows="5"
+              placeholder="Enter description"
+            />
+            <button type="submit" disabled={isSubmitting}>Submit</button>
+          </Form>
+        )}
       </Formik>
     </article>
   );
