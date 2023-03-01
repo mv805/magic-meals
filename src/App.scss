@@ -1,0 +1,15 @@
+.page-footer {
+    position: absolute;
+    font-size: .85rem;
+    bottom: -5rem;
+    width: 100vw;
+    padding: 1rem;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--primary);
+
+    label {
+        padding-right: 1rem;
+    }
+}

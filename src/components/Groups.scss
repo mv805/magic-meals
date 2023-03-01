@@ -1,0 +1,21 @@
+.group-title {
+  margin: 0;
+}
+
+.delete-confirm {
+  display: flex;
+  column-gap: 1rem;
+
+  button {
+    margin-top: 1rem;
+  }
+}
+
+.confirm-delete-warning {
+  margin: 0;
+  text-align: center;
+}
+
+.confirm-group-delete {
+  background-color: rgb(252, 39, 39);
+}
