@@ -8,16 +8,26 @@ import navPages from "./nav-directory";
 import GroupDashboard from "./pages/GroupDashboard";
 
 function App() {
-  const [lightsOn, setLightsOn] = useState(true);
+  //controls the lights theme
+  const rootElement = document.documentElement;
+  let theme = localStorage.getItem("theme");
+  const [lights, setLights] = useState(theme);
+
+  if (theme === null) {
+    localStorage.setItem("theme", "dark");
+    theme = "dark";
+    setLights(theme);
+  }
+
+  rootElement.setAttribute("data-theme", theme);
 
   const toggleLights = () => {
-    const rootElement = document.documentElement;
-    setLightsOn(!lightsOn);
-
-    if (lightsOn) {
-      rootElement.setAttribute("data-theme", "light");
+    if (theme === "light") {
+      localStorage.setItem("theme", "dark");
+      setLights("dark");
     } else {
-      rootElement.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "light");
+      setLights("light");
     }
   };
 
@@ -36,7 +46,15 @@ function App() {
       </Routes>
       <footer className="page-footer">
         <div>
-          Built by <a href="https://github.com/mv805/magic-meals" target="_blank" rel="noreferrer">Matt Villa.</a> All rights Reserved.
+          Built by{" "}
+          <a
+            href="https://github.com/mv805/magic-meals"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Matt Villa.
+          </a>
+          &nbsp; All rights Reserved.
         </div>
         <label htmlFor="switch-1">
           <input
@@ -44,6 +62,7 @@ function App() {
             id="switch-1"
             name="switch-1"
             role="switch"
+            checked={lights === "dark" ? false : true}
             onChange={toggleLights}
           />
           Lights
