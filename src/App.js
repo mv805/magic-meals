@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import "./App.scss";
 import navPages from "./nav-directory";
 import GroupDashboard from "./pages/GroupDashboard";
+import Instructions from "./pages/Instructions";
 
 function App() {
   //controls the lights theme
@@ -35,6 +36,7 @@ function App() {
     <>
       <Routes>
         <Route exact path={navPages.Main} element={<Main />} />
+        <Route exact path={navPages.Instructions} element={<Instructions />} />
         <Route exact path={navPages.Login} element={<Login />} />
         <Route exact path={navPages.Home(":userId")} element={<Home />} />
         <Route

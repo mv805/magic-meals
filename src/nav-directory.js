@@ -8,6 +8,7 @@ const navPages = {
   Home: (userId) => {
     return `/home/${userId}`;
   },
+  Instructions: "/instructions",
 };
 
 export default navPages;

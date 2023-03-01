@@ -29,7 +29,7 @@ const Home = () => {
   const homePage = (user) => {
     return (
       <>
-        <MenuHeader pages={["About"]} logoutButton />
+        <MenuHeader pages={["About", "Instructions"]} logoutButton />
         <main className="container home">
         <Disclaimer/>
           <article>
