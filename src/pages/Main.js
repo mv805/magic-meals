@@ -10,6 +10,7 @@ import stepTwo from "../assets/step-2.PNG";
 import stepThree from "../assets/step-3.PNG";
 import stepFour from "../assets/step-4.PNG";
 import Disclaimer from "../components/Disclaimer";
+import './Main.scss';
 
 const Main = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -84,7 +85,7 @@ const Main = () => {
           that might pose a risk of allergen contamination. Group members can
           review these common foods at any time.
         </p>
-        <footer>
+        <footer className="figure">
           <img src={stepOne} alt="Create a user group" />
           <figcaption>
             Please login using your Google credentials and begin by creating a
@@ -101,7 +102,7 @@ const Main = () => {
           list out the allergens of concern that group members should be on the
           lookout for.
         </p>
-        <footer>
+        <footer className="figure">
           <img src={stepTwo} alt="Establish about section" />
         </footer>
       </article>
@@ -112,7 +113,7 @@ const Main = () => {
           person of interest. All group members can add and edit foods and
           recipes as needed.
         </p>
-        <footer>
+        <footer className="figure">
           <img src={stepThree} alt="Assess some foods" />
           <figcaption>
             Foods are listed here and danger levels noted.
