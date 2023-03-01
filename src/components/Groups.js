@@ -102,7 +102,9 @@ const Groups = (props) => {
               rows="5"
               placeholder="Enter description"
             />
-            <button type="submit" disabled={isSubmitting}>Submit</button>
+            <button type="submit" disabled={isSubmitting}>
+              Submit
+            </button>
           </Form>
         )}
       </Formik>
