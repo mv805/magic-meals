@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db, provider } from "../firebase_setup/firebase";
 import { signInWithPopup } from "firebase/auth";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { addDoc, collection} from "firebase/firestore";
 import MenuHeader from "../components/MenuHeader";
 import "./Login.scss";
 import navPages from "../nav-directory";
