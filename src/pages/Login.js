@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db, provider } from "../firebase_setup/firebase";
 import { signInWithPopup } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import MenuHeader from "../components/MenuHeader";
 import "./Login.scss";
 import navPages from "../nav-directory";
@@ -13,13 +13,17 @@ const Login = () => {
   const logUserIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        setDoc(
-          doc(db, "users", result.user.email),
+        addDoc(
+          collection(db, "users"),
           {
-            googleID: result.user.uid,
-          },
-          { merge: true }
+            id: result.user.uid,
+            email: result.user.email,
+            lastLogin: Date(),
+          }
         );
+        navigate(`${navPages.Home(result.user.uid)}`);
+      })
+      .then((result)=>{
         navigate(`${navPages.Home(result.user.uid)}`);
       })
       .catch((error) => {
